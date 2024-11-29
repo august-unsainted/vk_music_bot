@@ -1,3 +1,4 @@
+import logging
 from aiogram import Router, F
 from aiogram.types import Message, InlineQuery, InlineQueryResultArticle, InlineQueryResultAudio
 from aiogram.filters import CommandStart
@@ -5,7 +6,11 @@ from vkpymusic import Service
 # from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 # from vkpymusic import Playlist
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.WARNING)
+
 service = Service.parse_config()
+service.set_logger(logger)
 
 router = Router()
 
